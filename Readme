@@ -1,0 +1,3 @@
+DEBUG=LSINF1212:* npm start
+DEBUG=my-application ./bin/www
+
