@@ -42,15 +42,17 @@
 				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
 				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
 				<p>
-					<form id="myForm" method="post" action="/AddAbsence" >
-						<label class="form" for="date">Date de la réunion :</label>
+					<form id="myForm" method="post" action="/" >
+						<label class="form" for="absent">Utilisateur :</label>
+						<input name="user" id="user" type="text" />
+						<br /><br />
+						<label class="form" for="absent">Date de la réunion :</label>
 						<input name="date" id="date" type="text" />
 						<br /><br />
-						<label class="form2" for="absence">
+						<label class="form2" for="absent">
 							<textarea name="cause" id="cause" rows=20 cols=90></textarea>
 						</label>
 						<br /><br />
-						<span class="form"></span>
 						<input type="submit" value="Soumettre"/> <input type="reset" value="Remise à 0" />
 					</form>
 				</p>

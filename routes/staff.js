@@ -1,30 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var Staff = mongoose.model('staffs');
 
 router.get('/', function(req, res, next) {
 	res.render('staff.ejs');
 });
 
-router.post('/AddStaff', function(req, res) {
-	var db = req.db;
-	var date = req.body.date;
-	var type = req.body.type;
-	var cause = req.body.quoi;
-	var collection = db.get('staff');
-
-	collection.insert({
-		"username" : "Vincent",
-		"date" : date,
-		"type" : type,
-		"quoi" : cause
-		}, function (err, doc) {
-			if (err) {
-				res.send("There was a problem adding the information to the database.");
-			}
-			else {
-				res.redirect("/staff");
-			}
-	});
+router.post('/', function(req, res) {
+	new Staff({
+		user : req.body.user,
+		date : req.body.date,
+		type : req.body.type,
+		quoi : req.body.quoi})
+  .save(function(err, feedback) {
+    console.log(feedback)
+    res.redirect('staff');
+  });
 });
 
 module.exports = router;

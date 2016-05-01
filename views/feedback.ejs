@@ -42,12 +42,15 @@
 				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
 				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
 				<p>
-					<form id="myForm" method="post" action="/AddFeedback">
-						<label class="form" for="date">Date de la réunion :</label>
-						<input name="date" id="date" type="text" />
+					<form id="myForm" method="post" action="/feedback">
+						<label class="form" for="feedback">Date de la réunion :</label>
+						<input name="user" id="user" type="text" value="user" />
+						<br /><br />
+						<label class="form" for="feedback">Date de la réunion :</label>
+						<input name="date" id="date" type="text"  value="date"/>
 						<br /><br />
 						<label class="form" for="type">Type de réunion :</label>
-						<select name="type" id="type">
+						<select name="type" id="type" value="type">
 							<option value="none">Sélectionnez le type de réunion :</option>
 							<option value="simple">Simple réunion</option>
 							<option value="hike">Hike</option>
@@ -55,10 +58,9 @@
 						</select>
 						<br /><br />
 						<label class="form2" for="feedback">
-							<textarea name="feedback" id="feedback" rows=20 cols=90></textarea>
+							<textarea name="feedback" id="feedback" value="feedback" rows=20 cols=90></textarea>
 						</label>
 						<br /><br />
-						<span class="form"></span>
 						<input type="submit" value="Soumettre"/> <input type="reset" value="Remise à 0" />
 					</form>
 				</p>
