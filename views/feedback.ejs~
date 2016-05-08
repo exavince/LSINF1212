@@ -26,7 +26,6 @@
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
 				<li><a href="/events">Evenements</a></li>
-                		<li><a href="/login">Connection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -43,10 +42,27 @@
 				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
 				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
 				<p>
-					Bienvenue sur la partie de gestion des absences.</br>
-					Ici vous pourrez grâce à votre login, prévenir la troupe de votre
-					absence et vous tenir au courant des absences des autres personnes de
-					la troupe.
+					<form id="myForm" method="post" action="/feedback">
+						<label class="form" for="feedback">Date de la réunion :</label>
+						<input name="user" id="user" type="text" value="user" />
+						<br /><br />
+						<label class="form" for="feedback">Date de la réunion :</label>
+						<input name="date" id="date" type="text"  value="date"/>
+						<br /><br />
+						<label class="form" for="type">Type de réunion :</label>
+						<select name="type" id="type" value="type">
+							<option value="none">Sélectionnez le type de réunion :</option>
+							<option value="simple">Simple réunion</option>
+							<option value="hike">Hike</option>
+							<option value="camp">Camps</option>
+						</select>
+						<br /><br />
+						<label class="form2" for="feedback">
+							<textarea name="feedback" id="feedback" value="feedback" rows=20 cols=90></textarea>
+						</label>
+						<br /><br />
+						<input type="submit" value="Soumettre"/> <input type="reset" value="Remise à 0" />
+					</form>
 				</p>
 			</div>
 
@@ -61,7 +77,7 @@
 		</div>
 
 
-<!-- ------------------------------Menu de gauche------------------------------ -->
+<!-- ------------------------------Menu de gauche------------------------------- -->
 		<div id="sidebar1">
 			<div class="audio"><audio src="/images/musique.mp3" controls></audio></div>
 			<div>
@@ -86,7 +102,7 @@
   </div>
 
 
-<!-- ------------------------------Bas du site-------------------------------- -->
+<!-- ------------------------------Bas du site------------------------------- -->
 	<div id="portfolio-wrapper">
 		<div id="portfolio" class="container">
 			<div class="title">

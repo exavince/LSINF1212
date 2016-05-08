@@ -26,7 +26,6 @@
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
 				<li><a href="/events">Evenements</a></li>
-                		<li><a href="/login">Connection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -40,13 +39,12 @@
 
 	<!-- Block 1 -------------------- -->
 			<div class="post">
-				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
+				<h2>Photos et vidéos des scouts</h2>
 				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
 				<p>
-					Bienvenue sur la partie de gestion des absences.</br>
-					Ici vous pourrez grâce à votre login, prévenir la troupe de votre
-					absence et vous tenir au courant des absences des autres personnes de
-					la troupe.
+					Bienvenue dans la section photos & vidéos de notre site</br>
+					Ici vous retrouverez toutes les photos prisent pendant les différentes
+					réunions et événements au cours de l'année.
 				</p>
 			</div>
 
@@ -80,13 +78,13 @@
 						<p>Telle date</p>
 					</li>
 				</ul>
-				<a href="#" class="button">Planning</a>
+				<a href="planning.html" class="button">Planning</a>
 			</div>
   	</div>
   </div>
 
 
-<!-- ------------------------------Bas du site-------------------------------- -->
+<!-- ------------------------------Bas du site------------------------------ -->
 	<div id="portfolio-wrapper">
 		<div id="portfolio" class="container">
 			<div class="title">

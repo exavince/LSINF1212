@@ -26,67 +26,39 @@
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
 				<li><a href="/events">Evenements</a></li>
-                		<li><a href="/login">Connection</a></li>
+                <li><a href="/login">Connection</a></li>
 			</ul>
 		</div>
 	</div>
 
 
-	<div id="page" class="container">
-
-
 <!-- ------------------------------Corps du site------------------------------ -->
-		<div id="content">
 
-	<!-- Block 1 -------------------- -->
-			<div class="post">
-				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
-				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
-				<p>
-					Bienvenue sur la partie de gestion des absences.</br>
-					Ici vous pourrez grâce à votre login, prévenir la troupe de votre
-					absence et vous tenir au courant des absences des autres personnes de
-					la troupe.
-				</p>
-			</div>
+    <h1>Login</h1>
 
-	<!-- Block 2 -------------------- -->
-			<div>
-				<div class="post-title">
-					<h2>Programme de la prochaine réunion</h2>
-					<p>Ce samedi nous allons faire un stratego</p>
-					<p><img src="/images/stratego.jpg" alt="" class="image image-full"></p>
-				</div>
-			</div>
-		</div>
+    <% if (message.length > 0) { %>
+        <div><%= message %></div>
+    <% } %>
 
+    <form action="/login" method="post">
+        <div>
+            <label>Nom de compte</label>
+            <input type="text" name="username">
+        </div>
+        <div >
+            <label>Mot de passe</label>
+            <input type="password" name="password">
+        </div>
 
-<!-- ------------------------------Menu de gauche------------------------------ -->
-		<div id="sidebar1">
-			<div class="audio"><audio src="/images/musique.mp3" controls></audio></div>
-			<div>
-				<h2>Dernières nouvelles</h2>
-				<ul class="style2">
-          <li class="first">
-            <h3><a href="/events">Prochain évenement</a></h3>
-            <p>Telle date</p>
-          </li>
-					<li>
-						<h3><a href="/events">Prochain evenement</a></h3>
-						<p>Telle date</p>
-					</li>
-					<li>
-						<h3><a href="/events">Prochain evenement</a></h3>
-						<p>Telle date</p>
-					</li>
-				</ul>
-				<a href="#" class="button">Planning</a>
-			</div>
-  	</div>
-  </div>
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <hr>
+
+    <p>Pas encore de compte? <a href="/signup">S'inscrire</a></p>
 
 
-<!-- ------------------------------Bas du site-------------------------------- -->
+<!-- ------------------------------Bas du site------------------------------- -->
 	<div id="portfolio-wrapper">
 		<div id="portfolio" class="container">
 			<div class="title">

@@ -26,7 +26,6 @@
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
 				<li><a href="/events">Evenements</a></li>
-                		<li><a href="/login">Connection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -43,10 +42,27 @@
 				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
 				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
 				<p>
-					Bienvenue sur la partie de gestion des absences.</br>
-					Ici vous pourrez grâce à votre login, prévenir la troupe de votre
-					absence et vous tenir au courant des absences des autres personnes de
-					la troupe.
+					<form id="myForm" method="post" action="/staff">
+						<label class="form" for="staff">Utilisateur :</label>
+						<input name="user" id="user" type="text" />
+						<br /><br />
+						<label class="form" for="staff">Date de la réunion :</label>
+						<input name="date" id="date" type="text" />
+						<br /><br />
+						<label class="form" for="staff">Type de réunion :</label>
+						<select name="type" id="type">
+							<option value="none">Sélectionnez ce que vous allez faire :</option>
+							<option value="Activiter">Organisation d'activité</option>
+							<option value="Gouter">Gouter</option>
+						</select>
+						<br /><br />
+						<label class="form2" for="staff">
+							<textarea name="quoi" id="quoi" rows=20 cols=90></textarea>
+						</label>
+						<br /><br />
+						<span class="form"></span>
+						<input type="submit" value="Soumettre" /> <input type="reset" value="Remise à 0" />
+					</form>
 				</p>
 			</div>
 
@@ -86,7 +102,7 @@
   </div>
 
 
-<!-- ------------------------------Bas du site-------------------------------- -->
+<!-- ------------------------------Bas du site------------------------------- -->
 	<div id="portfolio-wrapper">
 		<div id="portfolio" class="container">
 			<div class="title">

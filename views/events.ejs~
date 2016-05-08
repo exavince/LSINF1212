@@ -26,7 +26,6 @@
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
 				<li><a href="/events">Evenements</a></li>
-                		<li><a href="/login">Connection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -43,19 +42,29 @@
 				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
 				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
 				<p>
-					Bienvenue sur la partie de gestion des absences.</br>
-					Ici vous pourrez grâce à votre login, prévenir la troupe de votre
-					absence et vous tenir au courant des absences des autres personnes de
-					la troupe.
+					<form id="myForm" method="post" action="/" >
+						<label class="form" for="absent">Utilisateur :</label>
+						<input name="user" id="user" type="text" />
+						<br /><br />
+						<label class="form" for="absent">Date de la réunion :</label>
+						<input name="date" id="date" type="text" />
+						<br /><br />
+						<label class="form2" for="absent">
+							<textarea name="cause" id="cause" rows=20 cols=90></textarea>
+						</label>
+						<br /><br />
+						<input type="submit" value="Soumettre"/> <input type="reset" value="Remise à 0" />
+					</form>
 				</p>
 			</div>
 
 	<!-- Block 2 -------------------- -->
 			<div>
 				<div class="post-title">
-					<h2>Programme de la prochaine réunion</h2>
-					<p>Ce samedi nous allons faire un stratego</p>
-					<p><img src="/images/stratego.jpg" alt="" class="image image-full"></p>
+					// use a loop to show all todo items at the very bottom.
+					<% absents.forEach( function( absence ){ %>
+  				<p><%= absence.content %></p>
+					<% }); %>
 				</div>
 			</div>
 		</div>
@@ -86,7 +95,7 @@
   </div>
 
 
-<!-- ------------------------------Bas du site-------------------------------- -->
+<!-- ------------------------------Bas du site------------------------------ -->
 	<div id="portfolio-wrapper">
 		<div id="portfolio" class="container">
 			<div class="title">

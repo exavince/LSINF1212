@@ -8,23 +8,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var session = require('express-session');
-var flash = require('connect-flash');
-var passport = require('passport');
-
 var index = require('./routes/index.js');
 var events = require('./routes/events.js');
 var feedback = require('./routes/feedback.js');
 var photo = require('./routes/photo.js');
 var planning = require('./routes/planning.js');
 var staff = require('./routes/staff.js');
-var logout = require('./routes/logout.js');
-// var login = require('./routes/login.js');
-// var signup = require('./routes/signup.js');
 
 var app = express();
-
-require('./passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,23 +29,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 
-app.use(session({secret: 'supersecret', saveUninitialized: true, resave: true}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-
-require('./routes/login')(app, passport);
-require('./routes/signup')(app, passport);
-
 app.use('/', index);
 app.use('/events', events);
 app.use('/feedback', feedback);
+app.use('/photo', photo);
 app.use('/planning', planning);
 app.use('/staff', staff);
 app.use('/photo', photo);
-app.use('/logout', logout);
-// app.use('/login', login);
-// app.use('/signup', signup);
 
 // error handlers
 // development error handler
