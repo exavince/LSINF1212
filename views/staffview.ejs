@@ -36,46 +36,18 @@
 
 <!-- ------------------------------Corps du site------------------------------ -->
 		<div id="content">
-			<div class="post">
+			<div class="post-title">
 				<%_ Staff.forEach(function(le){_%>
 					<%_ if (le.id == id) {_%>
-								<h2>Voici le feedback de <%=le.user %></h2>
-								<h3>Date de la réunion</h3>
-								<p><%=le.date %></p>
-								<h3>Type de Réunion </h3>
-								<p><%=le.type %></p>
-								<h3>Feedback </h3>
-								<p><%=le.quoi %></p>
+						<h2>Voici le feedback de <%=le.user %></h2>
+						<h3>Date de la réunion</h3>
+						<p><%=le.date %></p>
+						<h3>Type de Réunion </h3>
+						<p><%=le.type %></p>
+						<h3>Feedback </h3>
+						<p><%=le.quoi %></p>
+						<a href='/staff?id=<%=le.id %>' class="button">Delete</a>
 				<%_ }}); _%>
-			</div>
-
-	<!-- Block 2 -------------------- -->
-			<div class="post-title">
-				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
-				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
-				<p>
-					<form id="myForm" method="post" action="/staff">
-						<label class="form" for="staff">Utilisateur :</label>
-						<input name="user" id="user" type="text" />
-						<br /><br />
-						<label class="form" for="staff">Date de la réunion :</label>
-						<input name="date" id="date" type="text" />
-						<br /><br />
-						<label class="form" for="staff">Type de réunion :</label>
-						<select name="type" id="type">
-							<option value="none">Sélectionnez ce que vous allez faire :</option>
-							<option value="Activiter">Organisation d'activité</option>
-							<option value="Gouter">Gouter</option>
-						</select>
-						<br /><br />
-						<label class="form2" for="staff">
-							<textarea name="quoi" id="quoi" rows=20 cols=90></textarea>
-						</label>
-						<br /><br />
-						<span class="form"></span>
-						<input type="submit" value="Soumettre" /> <input type="reset" value="Remise à 0" />
-					</form>
-				</p>
 			</div>
 		</div>
 
@@ -83,7 +55,7 @@
 <!-- ------------------------------Menu de gauche------------------------------ -->
 		<div id="sidebar1">
 			<div>
-				<h2>Dernières nouvelles</h2>
+				<h2>Qui fait quoi ?</h2>
 				<ul class="style2">
 					<%_ Staff.forEach(function(el){_%>
 					<li>

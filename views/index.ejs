@@ -52,25 +52,18 @@
 
 <!-- ------------------------------Menu de gauche------------------------------- -->
 		<div id="sidebar1">
-			<div>
-				<h2>Dernières nouvelles</h2>
+			<div style="height: 800px">
+				<h2>Chefs scout</h2>
 				<ul class="style2">
-          <li class="first">
-            <h3><a href="/events">Prochain évenement</a></h3>
-            <p>Telle date</p>
-          </li>
-					<li>
-						<h3><a href="/events">Prochain evenement</a></h3>
-						<p>Telle date</p>
-					</li>
-					<li>
-						<h3><a href="/events">Prochain evenement</a></h3>
-						<p>Telle date</p>
-					</li>
+					<%_ User.forEach(function(el){_%>
+						<li>
+							<h3><%=el.username %></h3>
+							<p><%=el.telephone %></p>
+						</li>
+					<%_ }); _%>
 				</ul>
-				<a href="#" class="button">Planning</a>
 			</div>
-  	</div>
+		</div>
   </div>
 
 

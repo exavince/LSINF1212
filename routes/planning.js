@@ -4,10 +4,22 @@ var mongoose = require('mongoose');
 var Absent = mongoose.model('absents');
 
 router.get('/', function(req, res, next) {
+	var id = req.query.id;
 	Absent.find().exec(function(err, Absent){
-		res.render('planning', {
-			Absent : Absent.reverse()
-		});
+		if (id) {
+			Absent.forEach(function(el){
+				if (el.id == id) {
+					el.remove(function(err, el){
+						res.redirect('planning');
+					});
+				}
+			});
+		}
+		else {
+			res.render('planning', {
+				Absent : Absent.reverse()
+			});
+		}
 	});
 });
 

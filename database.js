@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 var Absent = new Schema({
     user : String,
-    date : Date,
+    date : String,
     cause : String
 });
 mongoose.model('absents', Absent);
@@ -20,17 +20,17 @@ mongoose.model('feedbacks', Feedback);
 
 var Staff = new Schema ({
   user : String,
-  date : Date,
+  date : String,
   type : String,
   quoi : String
 });
 mongoose.model('staffs', Staff);
 
 var User = new Schema ({
-    local: {
-        username: String,
-        password: String
-    }
+  username: String,
+  password: String,
+  telephone: String,
+  mail: String
 });
 
 User.methods.generateHash = function(password) {

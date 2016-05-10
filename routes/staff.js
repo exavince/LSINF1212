@@ -4,10 +4,22 @@ var mongoose = require('mongoose');
 var Staff = mongoose.model('staffs');
 
 router.get('/', function(req, res, next) {
+	var id = req.query.id;
 	Staff.find().exec(function(err, Staff){
-		res.render('staff', {
-			Staff : Staff.reverse()
-		});
+		if (id) {
+			Staff.forEach(function(el){
+				if (el.id == id) {
+					el.remove(function(err, el){
+						res.redirect('staff');
+					});
+				}
+			});
+		}
+		else {
+			res.render('staff', {
+				Staff : Staff.reverse()
+			});
+		}
 	});
 });
 

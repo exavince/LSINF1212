@@ -4,10 +4,22 @@ var mongoose = require('mongoose');
 var Feedback = mongoose.model('feedbacks');
 
 router.get('/', function(req, res, next) {
+	var id = req.query.id;
 	Feedback.find().exec(function(err, Feedback){
-		res.render('feedback.ejs', {
-			Feedback : Feedback.reverse()
-		});
+		if (id) {
+			Feedback.forEach(function(el){
+				if (el.id == id) {
+					el.remove(function(err, el){
+						res.redirect('feedback');
+					});
+				}
+			});
+		}
+		else {
+			res.render('feedback', {
+				Feedback : Feedback.reverse()
+			});
+		}
 	});
 });
 

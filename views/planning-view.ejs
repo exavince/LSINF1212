@@ -38,7 +38,7 @@
 		<div id="content">
 
 	<!-- Block 1 -------------------- -->
-				<div class="post">
+				<div class="post-title">
 					<%_ Absent.forEach(function(le){_%>
 						<%_ if (le.id == id) {_%>
 							<h2>Voici l'absence' de <%=le.user %></h2>
@@ -46,35 +46,16 @@
 							<p><%=le.date %></p>
 							<h3>Cause </h3>
 							<p><%=le.cause %></p>
+						 	<a href='/planning?id=<%=le.id %>' class="button">Delete</a>
 							<%_ }}); _%>
 					</div>
-
-	<!-- Block 2 -------------------- -->
-			<div class="post-title">
-				<h2>Ajouter une absences ici</h2>
-				<p>
-					<form id="myForm" method="post" action="/planning" >
-						<label class="form" for="absent">Utilisateur :</label>
-						<input name="user" id="user" type="text" />
-						<br /><br />
-						<label class="form" for="absent">Date de la réunion :</label>
-						<input name="date" id="date" type="text" />
-						<br /><br />
-						<label class="form2" for="absent">
-							<textarea name="cause" id="cause" rows=20 cols=90></textarea>
-						</label>
-						<br /><br />
-						<input type="submit" value="Soumettre"/> <input type="reset" value="Remise à 0" />
-					</form>
-				</p>
-			</div>
 		</div>
 
 
 <!-- ------------------------------Menu de gauche------------------------------ -->
 		<div id="sidebar1">
 			<div>
-				<h2>Dernières nouvelles</h2>
+				<h2>Personnes absentes</h2>
 				<ul class="style2">
 					<%_ Absent.forEach(function(el){_%>
 					<li>
