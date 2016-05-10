@@ -8,7 +8,7 @@ var Absent = new Schema({
     date : String,
     cause : String
 });
-mongoose.model('absents', Absent);
+exports.Absent = mongoose.model('absents', Absent);
 
 var Feedback = new Schema ({
   user : String,
@@ -16,7 +16,7 @@ var Feedback = new Schema ({
   feedback : String,
   type : String
 });
-mongoose.model('feedbacks', Feedback);
+exports.Feedback = mongoose.model('feedbacks', Feedback);
 
 var Staff = new Schema ({
   user : String,
@@ -24,7 +24,7 @@ var Staff = new Schema ({
   type : String,
   quoi : String
 });
-mongoose.model('staffs', Staff);
+exports.Staff = mongoose.model('staffs', Staff);
 
 var User = new Schema ({
   username: String,
