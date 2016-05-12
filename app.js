@@ -12,6 +12,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
 
+/*
 var index = require('./routes/index.js');
 var feedback = require('./routes/feedback.js');
 var photo = require('./routes/photo.js');
@@ -23,6 +24,7 @@ var staffview = require('./routes/staffview');
 var planningview = require('./routes/planningview');
 // var login = require('./routes/login.js');
 // var signup = require('./routes/signup.js');
+*/
 
 var app = express();
 
@@ -35,7 +37,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
@@ -45,10 +47,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+require('./routes.js')(app, passport);
+/*
+require('./routes/index')(app, passport);
 require('./routes/login')(app, passport);
 require('./routes/signup')(app, passport);
 
-app.use('/', index);
+// app.use('/', index);
 app.use('/feedback', feedback);
 app.use('/planning', planning);
 app.use('/staff', staff);
@@ -59,7 +64,9 @@ app.use('/staffview', staffview);
 app.use('/planningview', planningview);
 // app.use('/login', login);
 // app.use('/signup', signup);
+*/
 
+/*
 // error handlers
 // development error handler
 // will print stacktrace
@@ -82,5 +89,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
+*/
 module.exports = app;

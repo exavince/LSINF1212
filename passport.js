@@ -23,16 +23,16 @@ module.exports = function(passport) {
         passReqToCallback: true
     },
     function(req, username, password, done) {
-        User.findOne({'local.username': username}, function(err, user) {
+        User.findOne({'username': username}, function(err, user) {
             if(err)
                 return done(err);
             if(user) {
                 return done(null, false, req.flash('signupMessage', 'Ce nom d\'utilisateur est déjà utilisé'));
             } else {
                 var newUser = new User();
-                newUser.local.username = username;
-                newUser.local.password = newUser.generateHash(password);
-
+                newUser.username = username;
+                newUser.password = newUser.generateHash(password);
+                
                 newUser.save(function(err) {
                     if(err)
                         throw err;
@@ -49,7 +49,7 @@ module.exports = function(passport) {
         passReqToCallback: true
     },
     function(req, username, password, done) {
-        User.findOne({'local.username': username}, function(err, user) {
+        User.findOne({'username': username}, function(err, user) {
             if(err)
                 return done(err);
             if(!user)
