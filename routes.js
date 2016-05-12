@@ -12,7 +12,7 @@ module.exports = function(app, passport) {
         res.render('index.ejs', {user: req.user});
     });
     
-    app.get('/feedback', function(req, res) {
+    app.get('/feedback', checkIfLoggedIn, function(req, res) {
         var id = req.query.id;
         Feedback.find().exec(function(err, Feedback){
             if (id) {
@@ -44,7 +44,7 @@ module.exports = function(app, passport) {
       });
     });
     
-    app.get('/staff', function(req, res, next) {
+    app.get('/staff', checkIfLoggedIn, function(req, res, next) {
         var id = req.query.id;
         Staff.find().exec(function(err, Staff){
             if (id) {
@@ -76,7 +76,7 @@ module.exports = function(app, passport) {
       });
     });
     
-    app.get('/planning', function(req, res, next) {
+    app.get('/planning', checkIfLoggedIn, function(req, res, next) {
         var id = req.query.id;
         Absent.find().exec(function(err, Absent){
             if (id) {
@@ -107,11 +107,11 @@ module.exports = function(app, passport) {
       });
     });
     
-    app.get('/photo', function(req, res, next) {
+    app.get('/photo', checkIfLoggedIn, function(req, res, next) {
 	   res.render('photo.ejs');
     });
     
-    app.get('/feedbackview', function(req, res) {
+    app.get('/feedbackview', checkIfLoggedIn, function(req, res) {
         var id = req.query.id;
         Feedback.find().exec(function(err, Feedback){
             res.render('feedback-view.ejs', {
@@ -121,7 +121,7 @@ module.exports = function(app, passport) {
         });
     });
     
-    app.get('/staffview', function(req, res, next) {
+    app.get('/staffview', checkIfLoggedIn, function(req, res, next) {
         var id = req.query.id;
         Staff.find().exec(function(err, Staff){
             res.render('staffview.ejs', {
@@ -131,7 +131,7 @@ module.exports = function(app, passport) {
         });
     });
     
-    app.get('/planningview', function(req, res, next) {
+    app.get('/planningview', checkIfLoggedIn, function(req, res, next) {
         var id = req.query.id;
         Absent.find().exec(function(err, Absent){
             res.render('planningview.ejs', {
@@ -166,11 +166,34 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
     
+    // error handlers
+    // development error handler
+    // will print stacktrace
+    if (app.get('env') === 'development') {
+        app.use(function(err, req, res, next) {
+            res.status(err.status || 500);
+            res.render('error', {
+                message: err.message,
+                error: err
+            });
+        });
+    }
+
+    // production error handler
+    // no stacktraces leaked to user
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
+    });
+    
 };
 
 function checkIfLoggedIn(req, res, next) {
     if(req.isAuthenticated())
         return next();
-    // req.flash('message', 'Vous devez être connecté pour accéder à cett partie site');
+    req.flash('loginMessage', 'Vous devez être connecté pour accéder à cette partie du site');
     res.redirect('/login');
 }
