@@ -38,4 +38,25 @@ describe('Router unit tests', function() {
 				.expect(302, done);
 		});
 	});
+
+	describe('Login', function() {
+		it('should respond', function(done) {
+			request.get('/login')
+				.expect(200, done);
+		});
+	});
+
+	describe('Signup', function() {
+		it('should respond', function(done) {
+			request.get('/signup')
+				.expect(200, done);
+		});
+	});
+
+	describe('Logout', function() {
+		it('should respond', function(done) {
+			request.get('/logout')
+				.expect(302, done);
+		});
+	});
 });
