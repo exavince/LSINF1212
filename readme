@@ -1,0 +1,5 @@
+Pour lancer le site aller dans le dossier racine et faire : npm start
+Pour lancer les tests aller dans le dossier racine et faire : npm test
+Pour créer une population dans la base de données il faut se mettre dans le dossier racine et faire : node population.js
+
+Aucun utilisateur n'est créer de base, il faut les créer via le formulaire et si vous voulez un utilisateur grader il faut mettre 'chef' dans la case grade.
