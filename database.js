@@ -29,6 +29,9 @@ exports.Staff = mongoose.model('staffs', Staff);
 var User = new Schema ({
   username: String,
   password: String,
+  nom: String,
+  prenom: String,
+  grade: String,
   telephone: String,
   mail: String
 });

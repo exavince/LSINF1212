@@ -269,7 +269,7 @@ a img {
 }
 
 #menu ul {
-	margin: 0px 0px 0px 55px;
+	margin: 0px 0px 0px 30px;
 	padding: 0px 0px;
 	list-style: none;
 	line-height: normal;
@@ -358,6 +358,9 @@ a img {
 	float: right;
 	width: 250px;
 	margin-right: 35px;
+}
+
+#sidebar1 ul {
 	overflow: scroll;
 }
 

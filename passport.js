@@ -5,18 +5,18 @@ var mongoose = require('mongoose');
 var User = mongoose.model('user');
 
 module.exports = function(passport) {
-    
+
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
-    
-    
+
+
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
             done(err, user);
         });
     });
-    
+
     passport.use('local-signup', new LocalStrategy({
         usernameField: 'username',
         passwordField: 'password',
@@ -32,7 +32,11 @@ module.exports = function(passport) {
                 var newUser = new User();
                 newUser.username = username;
                 newUser.password = newUser.generateHash(password);
-                
+                newUser.nom = req.body.nom;
+                newUser.prenom = req.body.prenom;
+                newUser.mail = req.body.mail;
+                newUser.telephone = req.body.telephone;
+                newUser.grade = req.body.grade;
                 newUser.save(function(err) {
                     if(err)
                         throw err;
@@ -42,7 +46,7 @@ module.exports = function(passport) {
 
         });
     }));
-    
+
     passport.use('local-login', new LocalStrategy({
         usernameField: 'username',
         passwordField: 'password',
@@ -59,5 +63,12 @@ module.exports = function(passport) {
             return done(null, user);
         });
     }));
-    
+
+    function checkIfLoggedIn(req, res, next) {
+        if(req.isAuthenticated())
+            return next();
+        req.flash('loginMessage', 'Vous devez être connecté pour accéder à cette partie du site');
+        res.redirect('/login');
+    }
+
 };

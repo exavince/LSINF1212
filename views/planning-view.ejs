@@ -21,11 +21,11 @@
 		<div id="menu" class="container">
 			<ul>
 				<li><a href="/">Homepage</a></li>
-				<li><a href="/photo">Photos $ Vidéos</a></li>
+				<li><a href="/photo">Photos & Vidéos</a></li>
 				<li><a href="/planning">Planning & absences</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
-        <li><a href="/login">Deconnection</a></li>
+        <li><a href="/logout">Deconnection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -41,12 +41,12 @@
 				<div class="post-title">
 					<%_ Absent.forEach(function(le){_%>
 						<%_ if (le.id == id) {_%>
-							<h2>Voici l'absence' de <%=le.user %></h2>
+							<h2>Voici l'absence de <%=le.user %></h2>
 							<h3>Date de la réunion</h3>
 							<p><%=le.date %></p>
 							<h3>Cause </h3>
 							<p><%=le.cause %></p>
-						 	<a href='/planning?id=<%=le.id %>' class="button">Delete</a>
+							<%_ if(user.name == le.user || user.grade == 'chef'){ _%><a href='/staff?id=<%=le.id %>' class="button">Delete</a><%_ } _%>
 							<%_ }}); _%>
 					</div>
 		</div>
@@ -56,7 +56,7 @@
 		<div id="sidebar1">
 			<div>
 				<h2>Personnes absentes</h2>
-				<ul class="style2">
+				<ul class="style2" style="height: 400px">
 					<%_ Absent.forEach(function(el){_%>
 					<li>
 							<h3><a href='/planningview?id=<%= el.id %>'> <%=el.user %> </a></h3>

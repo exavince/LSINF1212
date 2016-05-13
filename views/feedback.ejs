@@ -25,7 +25,7 @@
 				<li><a href="/planning">Planning & absences</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
-				<li><a href="/login">Deconnection</a></li>
+				<li><a href="/logout">Deconnection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,13 +39,9 @@
 
 	<!-- Block 1 -------------------- -->
 			<div class="post">
-				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
-				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
+				<h2>Bienvenue dans la section feedback</h2>
 				<p>
 					<form id="myForm" method="post" action="/feedback">
-						<label class="form" for="feedback">Date de la réunion :</label>
-						<input name="user" id="user" type="text" value="user" />
-						<br /><br />
 						<label class="form" for="feedback">Date de la réunion :</label>
 						<input name="date" id="date" type="text"  value="date"/>
 						<br /><br />
@@ -61,7 +57,7 @@
 							<textarea name="feedback" id="feedback" value="feedback" rows=20 cols=90></textarea>
 						</label>
 						<br /><br />
-						<input type="submit" value="Soumettre"/> <input type="reset" value="Remise à 0" />
+						<div style="text-align:center"><input type="submit" value="Soumettre" class="button"/></div>
 					</form>
 				</p>
 			</div>
@@ -70,9 +66,9 @@
 
 <!-- ------------------------------Menu de gauche------------------------------- -->
 		<div id="sidebar1">
-			<div style="height: 800px">
+			<div>
 				<h2>Dernier feedback</h2>
-				<ul class="style2">
+				<ul class="style2" style="height: 500px">
 					<%_ Feedback.forEach(function(el){_%>
 					<li>
 							<h3><a href='/feedbackview?id=<%= el.id %>'> <%=el.user %> </a></h3>

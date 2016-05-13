@@ -25,7 +25,7 @@
 				<li><a href="/planning">Planning & absences</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
-        <li><a href="/login">Deconnection</a></li>
+        <li><a href="/logout">Deconnection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,14 +39,14 @@
 			<div class="post-title">
 				<%_ Staff.forEach(function(le){_%>
 					<%_ if (le.id == id) {_%>
-						<h2>Voici le feedback de <%=le.user %></h2>
+						<h2><%=le.user %> va s'occuper de :</h2>
 						<h3>Date de la réunion</h3>
 						<p><%=le.date %></p>
 						<h3>Type de Réunion </h3>
 						<p><%=le.type %></p>
-						<h3>Feedback </h3>
+						<h3>Quoi </h3>
 						<p><%=le.quoi %></p>
-						<a href='/staff?id=<%=le.id %>' class="button">Delete</a>
+						<%_ if(user.name == le.user || user.grade == 'chef'){ _%><a href='/staff?id=<%=le.id %>' class="button">Delete</a><%_ } _%>
 				<%_ }}); _%>
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 		<div id="sidebar1">
 			<div>
 				<h2>Qui fait quoi ?</h2>
-				<ul class="style2">
+				<ul class="style2" style="height: 400px">
 					<%_ Staff.forEach(function(el){_%>
 					<li>
 							<h3><a href='/staffview?id=<%= el.id %>'> <%=el.user %> </a></h3>

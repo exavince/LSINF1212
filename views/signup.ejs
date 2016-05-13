@@ -25,37 +25,48 @@
 				<li><a href="/planning">Planning et absences</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
-                <li><a href="/login">Connection</a></li>
+        <li><a href="/login">Connection</a></li>
 			</ul>
 		</div>
 	</div>
 
 
 <!-- ------------------------------Corps du site------------------------------ -->
-
-    <h1>Inscription</h1>
-
-    <% if (message.length > 0) { %>
-        <%= message %>
-    <% } %>
-
-    <form action="/signup" method="post">
-        <div>
-            <label>Nom de compte</label>
-            <input type="text" name="username">
-        </div>
-        <div>
-            <label>Mot de passe</label>
-            <input type="password" name="password">
-        </div>
-
-        <button type="submit">Inscription</button>
-    </form>
-
-    <hr>
-
-    <p>Déjà un compte? <a href="/login">Se connecter</a></p>
-
+<!-- Block 1 -------------------- -->
+	<div class="post-title">
+		<h2>Inscription</h2>
+		<h3 style="text-align:center">
+			<% if(message.length > 0) { %>
+				<div><%= message %></div>
+			<% } %>
+			<form action="/signup" method="post">
+				<label>Nom de compte</label>
+				<input type="text" name="username">
+				</br></br>
+				<label>Mot de passe</label>
+				<input type="password" name="password">
+				</br></br>
+				<label>Nom</label>
+				<input type="nom" name="nom">
+				</br></br>
+				<label>Prenom</label>
+				<input type="prenom" name="prenom">
+				</br></br>
+				<label>Mail</label>
+				<input type="mail" name="mail">
+				</br></br>
+				<label>Telephone</label>
+				<input type="telephone" name="telephone">
+				</br></br>
+				<label>Grade</label>
+				<input type="grade" name="grade">
+				</br></br>
+				<button type="submit" class="button">Inscription</button>
+			</form>
+		</h3>
+		</br></br>
+		<p style="text-align:center">Déjà un compte? <a href="/login">Se connecter</a></p>
+	</div>
 
 
 <!-- ------------------------------Bas du site------------------------------- -->

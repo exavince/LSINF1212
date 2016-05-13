@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+var mongoose = require('mongoose');
+var User = mongoose.model('user');
 
-router.get('/', function(req, res, next) {
-	res.logout();
-    res.redirect('index');
-});
+module.exports = function(app, passport) {
 
-module.exports = router;
+    app.get('/logout', function(req, res, next) {
+        req.logout();
+        res.redirect('/');
+    });
+};
+
+function checkIfLoggedIn(req, res, next) {
+    if(req.isAuthenticated())
+        return next();
+    req.flash('loginMessage', 'Vous devez être connecté pour accéder à cette partie du site');
+    res.redirect('/login');
+}

@@ -25,7 +25,7 @@
 				<li><a href="/planning">Planning & absences</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
-        <li><a href="/login">deconnection</a></li>
+        <li><a href="/logout">Deconnection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -48,7 +48,7 @@
 								<p><%=le.type %></p>
 								<h3>Feedback </h3>
 								<p><%=le.feedback %></p>
-								<a href='/feedback?id=<%=le.id %>' class="button">Delete</a>
+								<%_ if(user.name == le.user || user.grade == 'chef'){ _%><a href='/staff?id=<%=le.id %>' class="button">Delete</a><%_ } _%>
 				<%_ }}); _%>
 			</div>
 		</div>
@@ -58,10 +58,10 @@
 		<div id="sidebar1">
 			<div>
 				<h2>Dernier feedback</h2>
-				<ul class="style2">
+				<ul class="style2" style="height: 400px">
 					<%_ Feedback.forEach(function(el){_%>
 						<li>
-							<h3><a href='/feedbackview?id?<%= el.id %>'> <%=el.user %> </a></h3>
+							<h3><a href='/feedbackview?id=<%= el.id %>'> <%=el.user %> </a></h3>
 							<p><%=el.date %></p>
 						</li>
 					<%_ }); _%>

@@ -1,6 +1,3 @@
-// mongoose config
-require('./database');
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,23 +8,9 @@ var url = require('url');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
-
-/*
-var index = require('./routes/index.js');
-var feedback = require('./routes/feedback.js');
-var photo = require('./routes/photo.js');
-var planning = require('./routes/planning.js');
-var staff = require('./routes/staff.js');
-var logout = require('./routes/logout.js');
-var feedbackview = require('./routes/feedback-view.js');
-var staffview = require('./routes/staffview');
-var planningview = require('./routes/planningview');
-// var login = require('./routes/login.js');
-// var signup = require('./routes/signup.js');
-*/
-
 var app = express();
 
+require('./database');
 require('./passport')(passport);
 
 // view engine setup
@@ -41,32 +24,25 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
-
 app.use(session({secret: 'supersecret', saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./routes.js')(app, passport);
-/*
+
 require('./routes/index')(app, passport);
 require('./routes/login')(app, passport);
 require('./routes/signup')(app, passport);
+require('./routes/feedback-view')(app, passport);
+require('./routes/feedback')(app, passport);
+require('./routes/logout')(app, passport);
+require('./routes/planning')(app, passport);
+require('./routes/planningview')(app, passport);
+require('./routes/staff')(app, passport);
+require('./routes/staffview')(app, passport);
+require('./routes/photo')(app, passport);
 
-// app.use('/', index);
-app.use('/feedback', feedback);
-app.use('/planning', planning);
-app.use('/staff', staff);
-app.use('/photo', photo);
-app.use('/logout', logout);
-app.use('/feedbackview', feedbackview);
-app.use('/staffview', staffview);
-app.use('/planningview', planningview);
-// app.use('/login', login);
-// app.use('/signup', signup);
-*/
 
-/*
 // error handlers
 // development error handler
 // will print stacktrace
@@ -89,5 +65,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-*/
+
+
 module.exports = app;

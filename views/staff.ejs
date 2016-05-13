@@ -25,7 +25,7 @@
 				<li><a href="/planning">Planning & absences</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/staff">Gestion du staff</a></li>
-        <li><a href="/login">Deconnection</a></li>
+        <li><a href="/logout">Deconnection</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,13 +39,9 @@
 
 	<!-- Block 1 -------------------- -->
 			<div class="post">
-				<h2>Bienvenue chez les scouts de Louvain-la-neuve</h2>
-				<p><img src="/images/ban.jpg" alt="" class="image image-full" /></p>
+				<h2>Bienvenue dans la section de gestion du staff</h2>
 				<p>
 					<form id="myForm" method="post" action="/staff">
-						<label class="form" for="staff">Utilisateur :</label>
-						<input name="user" id="user" type="text" />
-						<br /><br />
 						<label class="form" for="staff">Date de la réunion :</label>
 						<input name="date" id="date" type="text" />
 						<br /><br />
@@ -61,7 +57,7 @@
 						</label>
 						<br /><br />
 						<span class="form"></span>
-						<input type="submit" value="Soumettre" /> <input type="reset" value="Remise à 0" />
+						<%_ if(user.grade == 'chef'){ _%><input type="submit" value="Soumettre" class="button" /><%_ } _%>
 					</form>
 				</p>
 			</div>
@@ -72,7 +68,7 @@
 		<div id="sidebar1">
 			<div>
 				<h2>qui fait quoi ?</h2>
-				<ul class="style2">
+				<ul class="style2" style="height: 600px">
 					<%_ Staff.forEach(function(el){_%>
 					<li>
 							<h3><a href='/staffview?id=<%= el.id %>'> <%=el.user %> </a></h3>
