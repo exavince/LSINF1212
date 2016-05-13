@@ -1,0 +1,19 @@
+Feature: Loging in on the web site
+
+In order to gain access to the web site
+As a scout (leader or not)
+I want to be able to connect to my personnal account
+
+Scenario: A scout tries to log in while not being registred on the web site yet
+Given a user not registred on the web site
+When the user tries to log in
+Then the loging in fails
+And the user is notified of the error
+And is redirected to the signup part of the web site
+
+Scenario: A scout tries to log in with his own account he previously created
+Given a user registred on the web site
+When the user tries to log in with correct identifiers
+Then the loging in succeeds
+And the user is now connected
+And is redirected to the main page of the web site

@@ -1,0 +1,18 @@
+Feature: Signing up on the web site
+
+In order to gain access to the web site
+As a scout (leader or not)
+I want to be able to create my personnal account
+
+Scenario: A scout signs up on the web site with a new username
+Given a user not registred on the web site
+When the user tries to sign up with a non yet used username
+Then a new user with entered identifiers is created
+And the user is now logged in on the web site
+And is redirected to the main page of the web site
+
+Scenario: A scout signs up on the web site with existing username
+Given a user not registred on the web site
+When the user tries to sign up with an already used username
+Then the user is notified of the error
+And is redirected to the sign up page of the web site

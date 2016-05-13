@@ -43,6 +43,6 @@ User.methods.generateHash = function(password) {
 User.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
-mongoose.model('user', User);
+exports.User = mongoose.model('user', User);
 
 mongoose.connect('mongodb://localhost/projet');

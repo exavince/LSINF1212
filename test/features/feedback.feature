@@ -1,0 +1,11 @@
+Feature: Give feedback of a reunion
+
+In order to improve the quality of upcoming reunions
+As a scout leader
+I want to get the opinion of a scout about a previous reunion
+
+Scenario: A scout gives feedback
+Given a scout registered on the web site
+When the scout gives a feedback of a reunion that happened on a certain date
+Then the feedback is added to the feedback list for this date
+
